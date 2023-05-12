@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: New Ingredient 2
   m_EditorClassIdentifier: 
   <Name>k__BackingField: 
-  <IngredientSprite>k__BackingField: {fileID: 0}
+  <IngredientSprite>k__BackingField: {fileID: 21300000, guid: 29f9372aa7d82db4e8d03624ed86e3d8, type: 3}
