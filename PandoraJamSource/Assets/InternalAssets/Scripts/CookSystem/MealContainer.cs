@@ -4,18 +4,27 @@ namespace InternalAssets.Scripts.CookSystem
 {
     public class MealContainer
     {
-        private readonly SerializedDictionary<Ingredient[], Meal> _mealsRecipes = new();
+        private readonly SerializedDictionary<Recipe, Meal> _mealsRecipes = new();
 
-        public MealContainer(SerializedDictionary<Ingredient[], Meal> mealsRecipes)
+        public MealContainer(SerializedDictionary<Recipe, Meal> mealsRecipes)
         {
             _mealsRecipes = mealsRecipes;
         }
 
-        public Meal Get(Ingredient[] ingredients)
+        public bool Get(Recipe recipe, out Meal newMeal)
         {
-            _mealsRecipes.TryGetValue(ingredients, out Meal meal);
-
-            return meal;
+            newMeal = null;
+            
+            foreach (var mealsRecipe in _mealsRecipes)
+            {
+                if (mealsRecipe.Key == recipe)
+                {
+                    newMeal = mealsRecipe.Value;
+                    return true;
+                }
+            }
+            
+            return false;
         }
     }
 }

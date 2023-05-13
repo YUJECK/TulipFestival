@@ -6,7 +6,7 @@ namespace InternalAssets.Scripts.MonoInstallers
 {
     public class CookingSystemInstaller : MonoInstaller
     {
-        public SerializedDictionary<Ingredient[], Meal> MealsRecipes = new();
+        public SerializedDictionary<Recipe, Meal> MealsRecipes = new();
 
         public override void InstallBindings()
         {
@@ -15,6 +15,12 @@ namespace InternalAssets.Scripts.MonoInstallers
             Container
                 .Bind<MealContainer>()
                 .FromInstance(mealContainer)
+                .AsSingle();
+            
+            
+            Container
+                .Bind<Pot>()
+                .FromInstance(new Pot(mealContainer))
                 .AsSingle();
         }
     }

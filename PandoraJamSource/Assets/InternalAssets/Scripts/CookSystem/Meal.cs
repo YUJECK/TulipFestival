@@ -6,6 +6,6 @@ namespace InternalAssets.Scripts.CookSystem
     public sealed class Meal : ScriptableObject
     {
         [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public Sprite IngredientSprite { get; private set; }
+        [field: SerializeField] public Sprite MealSprite { get; private set; }
     }
 }

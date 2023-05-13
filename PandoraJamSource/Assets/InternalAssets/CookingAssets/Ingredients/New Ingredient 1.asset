@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d099beb486c417d9b69ffbed719a9f7, type: 3}
   m_Name: New Ingredient 1
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <IngredientSprite>k__BackingField: {fileID: 21300000, guid: 803b0b9bfc1fd824aae8423bfbab83b4, type: 3}
+  <Name>k__BackingField: "\u0425\u0440\u0435\u043D\u044C 1"
+  <IngredientSprite>k__BackingField: {fileID: -1393239549, guid: c5a171f994d51e5458dd767f76c85367, type: 3}

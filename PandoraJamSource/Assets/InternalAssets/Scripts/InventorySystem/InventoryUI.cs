@@ -25,22 +25,19 @@ namespace InternalAssets.Scripts.InventorySystem
         {
             if (_firstSlot.Empty)
             {
-                
-                Debug.Log("messege2");
-                
                 _firstSlot.Set(ingredient);
                 return;
             }
 
             if (_secondSlot.Empty)
             {
-                _firstSlot.Set(ingredient);
+                _secondSlot.Set(ingredient);
                 return;
             }
 
             if (_thirdSlot.Empty)
             {
-                _firstSlot.Set(ingredient);
+                _thirdSlot.Set(ingredient);
                 return;
             }
         }
