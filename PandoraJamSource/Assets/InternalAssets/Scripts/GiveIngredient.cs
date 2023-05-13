@@ -12,11 +12,9 @@ namespace InternalAssets.Scripts
         [SerializeField] private Ingredient _ingredient;
         
         [Inject]
-        private void Constructor(Inventory inventory)
-        {
-            _inventory = inventory;
-        }
-        
+        private void Constructor(Inventory inventory) 
+            => _inventory = inventory;
+
         private void OnTriggerEnter2D(Collider2D coll) 
             => _inventory.AddIngredient(_ingredient);
     }

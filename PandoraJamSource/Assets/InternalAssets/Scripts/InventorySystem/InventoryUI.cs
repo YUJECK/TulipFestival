@@ -1,7 +1,5 @@
-using System.Net.Mime;
 using InternalAssets.Scripts.CookSystem;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 namespace InternalAssets.Scripts.InventorySystem
@@ -9,8 +7,10 @@ namespace InternalAssets.Scripts.InventorySystem
     public sealed class InventoryUI : MonoBehaviour
     {
         private Inventory _inventory;
-
-        [SerializeField] private Image _slot;
+        
+        [SerializeField] private Slot _firstSlot;
+        [SerializeField] private Slot _secondSlot;
+        [SerializeField] private Slot _thirdSlot;
         
         [Inject]
         private void Constructor(Inventory inventory)
@@ -23,12 +23,30 @@ namespace InternalAssets.Scripts.InventorySystem
 
         private void OnAdded(Ingredient ingredient)
         {
-            _slot.gameObject.SetActive(true);
-            _slot.sprite = ingredient.IngredientSprite;
+            if (_firstSlot.Empty)
+            {
+                
+                Debug.Log("messege2");
+                
+                _firstSlot.Set(ingredient);
+                return;
+            }
+
+            if (_secondSlot.Empty)
+            {
+                _firstSlot.Set(ingredient);
+                return;
+            }
+
+            if (_thirdSlot.Empty)
+            {
+                _firstSlot.Set(ingredient);
+                return;
+            }
         }
         private void OnRemoved(Ingredient ingredient)
         {
-            _slot.gameObject.SetActive(false);
+            
         }
     }
 }

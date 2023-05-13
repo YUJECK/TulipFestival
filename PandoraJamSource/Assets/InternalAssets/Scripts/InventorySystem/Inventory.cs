@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using InternalAssets.Scripts.CookSystem;
-using Unity.VisualScripting;
+using UnityEngine;
 
 namespace InternalAssets.Scripts.InventorySystem
 {
@@ -12,18 +12,24 @@ namespace InternalAssets.Scripts.InventorySystem
         public event Action<Ingredient> OnIngredientAdded;
         public event Action<Ingredient> OnIngredientRemoved;
 
+        private bool IsFull => _ingredients.Count > 3;
+
+
         public void AddIngredient(Ingredient ingredient)
         {
-            OnIngredientAdded?.Invoke(ingredient);
+            if (IsFull)
+                return;
             
             if (_ingredients.ContainsKey(ingredient))
-            {
                 _ingredients[ingredient]++;
-                return;
-            }
+            else
+                _ingredients.Add(ingredient, 1);
+
+            Debug.Log("messege1");
             
-            _ingredients.Add(ingredient, 1);
+            OnIngredientAdded?.Invoke(ingredient);
         }
+
         public void RemoveIngredient(Ingredient ingredient)
         {
             if (!_ingredients.ContainsKey(ingredient)) return;
@@ -38,6 +44,7 @@ namespace InternalAssets.Scripts.InventorySystem
             
             OnIngredientRemoved?.Invoke(ingredient);
         }
+
         public bool Contains(Ingredient ingredient) 
             => _ingredients.ContainsKey(ingredient);
     }
