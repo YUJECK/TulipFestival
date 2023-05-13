@@ -11,6 +11,8 @@ namespace InternalAssets.Scripts.CookSystem
         public event Action<Ingredient> OnAdded;
         public event Action<Ingredient> OnRemoved;
 
+        public event Action<Meal> OnCooked; 
+
         public Ingredient[] Ingredients => _currentIngredients.ToArray();
         
         public Pot(MealContainer mealContainer)
@@ -22,11 +24,16 @@ namespace InternalAssets.Scripts.CookSystem
         {
             _currentIngredients.Add(ingredient);
             OnAdded?.Invoke(ingredient);
+
+            TryCook();
         }
 
-        public bool Check()
+        public bool TryCook()
         {
-            return _mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal);
+            _mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal);
+            OnCooked?.Invoke(meal);
+            
+            return true;
         }
     }
 }

@@ -39,9 +39,6 @@ namespace InternalAssets.Scripts.CookSystem
         {
             _ingredientsImages[_currentEmpty].sprite = obj.IngredientSprite;
             _currentEmpty++;
-
-            if (_mealContainer.Get(new Recipe(_pot.Ingredients), out var meal))
-                _mealSprite.sprite = meal.MealSprite;
         }
     }
 }
