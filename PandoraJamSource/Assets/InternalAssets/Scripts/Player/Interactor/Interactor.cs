@@ -41,6 +41,8 @@ namespace Presnoyarsk.Player
                     _detectedObjects.Remove(detectable);
                 }
             }
+            if (collision.TryGetComponent(out IInteractive interactive) && _availableInteractions.Contains(interactive))
+                _availableInteractions.Remove(interactive);
         }
     }
 }

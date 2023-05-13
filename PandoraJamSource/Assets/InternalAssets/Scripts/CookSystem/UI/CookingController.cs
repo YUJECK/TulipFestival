@@ -14,15 +14,12 @@ namespace InternalAssets.Scripts.CookSystem.UI
         private void Constructor(Inventory inventory)
         {
             _inventory = inventory;
-        }
-        
-        private void Awake()
-        {
-            _buttons = GetComponentsInChildren<IngredientAddButton>();
+            
+            _inventory.OnIngredientAdded += UpdateSlots;
         }
 
-        private void OnEnable()
-        {
+        private void UpdateSlots(Ingredient obj)
+        {            
             int currentButton = 0;
             
             foreach (var ingredient in _inventory.Ingredients)
@@ -30,6 +27,16 @@ namespace InternalAssets.Scripts.CookSystem.UI
                 _buttons[currentButton].SetIngredient(ingredient.Key);
                 currentButton++;
             }    
+        }
+
+        private void Awake()
+        {
+            _buttons = GetComponentsInChildren<IngredientAddButton>();
+        }
+
+        private void OnEnable()
+        {
+            UpdateSlots(null);
         }
     }
 }
