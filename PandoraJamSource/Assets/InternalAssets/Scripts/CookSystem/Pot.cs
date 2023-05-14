@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace InternalAssets.Scripts.CookSystem
 {
@@ -24,14 +25,23 @@ namespace InternalAssets.Scripts.CookSystem
         {
             _currentIngredients.Add(ingredient);
             OnAdded?.Invoke(ingredient);
-
-            TryCook();
         }
 
+        public void RemoveAll()
+        {
+            foreach (var ingredient in _currentIngredients)
+            {
+                OnRemoved?.Invoke(ingredient);
+            }
+            _currentIngredients.Clear();
+        }
+        
         public bool TryCook()
         {
-            _mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal);
-            OnCooked?.Invoke(meal);
+            Debug.Log("dslkjf");
+            
+            if(_mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal))
+                OnCooked?.Invoke(meal);
             
             return true;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace InternalAssets.Scripts.CookSystem
 {
@@ -18,9 +19,13 @@ namespace InternalAssets.Scripts.CookSystem
             foreach (var ingredient in recipe1.Ingredients)
             {
                 if (!recipe2.Ingredients.Contains(ingredient))
+                {
+                    Debug.Log("messegsfde");
                     return false;
+                }
             }
 
+            Debug.Log("messegsafdafsdfakjsdfjsfde");
             return true;
         }
 

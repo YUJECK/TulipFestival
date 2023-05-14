@@ -24,7 +24,7 @@ namespace InternalAssets.Scripts.CookSystem.UI
             
             foreach (var ingredient in _inventory.Ingredients)
             {
-                _buttons[currentButton].SetIngredient(ingredient.Key);
+                _buttons[currentButton].SetIngredient(ingredient);
                 currentButton++;
             }    
         }

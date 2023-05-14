@@ -7,7 +7,7 @@ namespace InternalAssets.Scripts.InputServices
     {
         event Action<Vector2> OnMoved;
         event Action OnInteracted;
-        event Action OnDialoguePressed;
+        event Action OnListPressed;
         event Action OnRightMouseButtonPressed;
         event Action OnLeftMouseButtonPressed;
     }

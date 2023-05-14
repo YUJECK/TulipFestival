@@ -1,4 +1,5 @@
 using AYellowpaper.SerializedCollections;
+using UnityEngine;
 
 namespace InternalAssets.Scripts.CookSystem
 {
@@ -20,6 +21,8 @@ namespace InternalAssets.Scripts.CookSystem
                 if (mealsRecipe.Key == recipe)
                 {
                     newMeal = mealsRecipe.Value;
+                    Debug.Log("messegasdfasdfafae");
+                    
                     return true;
                 }
             }

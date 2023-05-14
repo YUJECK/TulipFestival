@@ -6,7 +6,7 @@ namespace InternalAssets.Scripts.InventorySystem
 {
     public sealed class Inventory
     {
-        public Dictionary<Ingredient, int> Ingredients { get; } = new();
+        public List<Ingredient> Ingredients { get; } = new();
 
         public event Action<Ingredient> OnIngredientAdded;
         public event Action<Ingredient> OnIngredientRemoved;
@@ -18,10 +18,7 @@ namespace InternalAssets.Scripts.InventorySystem
             if (IsFull)
                 return false;
             
-            if (Ingredients.ContainsKey(ingredient))
-                Ingredients[ingredient]++;
-            else
-                Ingredients.Add(ingredient, 1);
+            Ingredients.Add(ingredient);
 
             OnIngredientAdded?.Invoke(ingredient);
             return true;
@@ -29,20 +26,11 @@ namespace InternalAssets.Scripts.InventorySystem
 
         public void RemoveIngredient(Ingredient ingredient)
         {
-            if (!Ingredients.ContainsKey(ingredient)) return;
-            
-            if (Ingredients[ingredient] <= 0)
-            {
-                Ingredients.Remove(ingredient);
-                return;
-            }
-
-            Ingredients[ingredient]--;
-            
+            Ingredients.Remove(ingredient);
             OnIngredientRemoved?.Invoke(ingredient);
         }
 
         public bool Contains(Ingredient ingredient) 
-            => Ingredients.ContainsKey(ingredient);
+            => Ingredients.Contains(ingredient);
     }
 }

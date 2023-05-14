@@ -1,3 +1,4 @@
+using InternalAssets.Scripts.CookSystem.UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -8,11 +9,10 @@ namespace InternalAssets.Scripts.CookSystem
     {
         private Pot _pot;
 
-        private Image[] _ingredientsImages;
+        private IngredientImage[] _ingredientsImages;
 
         [SerializeField] private Image _mealSprite;
 
-        private int _currentEmpty = 1;
         private MealContainer _mealContainer;
 
         [Inject]
@@ -27,18 +27,47 @@ namespace InternalAssets.Scripts.CookSystem
 
         private void Awake()
         {
-            _ingredientsImages = GetComponentsInChildren<Image>();
+            _ingredientsImages = GetComponentsInChildren<IngredientImage>();
         }
 
         private void OnRemoved(Ingredient obj)
         {
-            
+            GetWith(obj).Remove().Disable();
         }
 
         private void OnAdded(Ingredient obj)
         {
-            _ingredientsImages[_currentEmpty].sprite = obj.IngredientSprite;
-            _currentEmpty++;
+            GetWith(null).SetIngredient(obj).Enable();
+        }
+
+        private IngredientImage GetWith(Ingredient ingredient)
+        {
+            foreach (var image in _ingredientsImages)
+            {
+                if (image.CurrentIngredient == ingredient)
+                    return image;
+            }
+
+            return null;
+        }
+        
+        public void TryCookButton()
+        {
+            if (_pot.TryCook())
+            {
+                _pot.RemoveAll();
+                RemoveAll();
+            }
+        }
+
+        public void RemoveAll()
+        {
+            _pot.RemoveAll();
+
+            foreach (var image in _ingredientsImages)
+            {
+                image.Remove().Disable();
+            }
         }
     }
 }

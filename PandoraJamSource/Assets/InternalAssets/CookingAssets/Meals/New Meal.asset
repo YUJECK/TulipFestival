@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ecb21dc5a0c4c6d8ed1cc275dc8aab7, type: 3}
   m_Name: New Meal
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: "\u0427\u0442\u043E\u0442\u043E"
   <MealSprite>k__BackingField: {fileID: -741216364, guid: 4f16f749f48661f41bfb5b99400b9f23, type: 3}

@@ -9,7 +9,7 @@ namespace InternalAssets.Scripts.InputServices
     {
         public event Action<Vector2> OnMoved;
         public event Action OnInteracted;
-        public event Action OnDialoguePressed;
+        public event Action OnListPressed;
         public event Action OnRightMouseButtonPressed;
         public event Action OnLeftMouseButtonPressed;
 
@@ -35,7 +35,7 @@ namespace InternalAssets.Scripts.InputServices
             => OnRightMouseButtonPressed?.Invoke();
 
         private void DialogueNext_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-            => OnDialoguePressed?.Invoke();
+            => OnListPressed?.Invoke();
 
         private void Interaction_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
             => OnInteracted?.Invoke();

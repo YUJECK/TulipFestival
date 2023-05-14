@@ -30,8 +30,6 @@ namespace InternalAssets.Scripts
         
         public void Interact()
         {
-            Debug.Log("messege");
-            
             _inventory.AddIngredient(_ingredient);
             _characterMoney.CurrentMoney -= _currentCost;
         }

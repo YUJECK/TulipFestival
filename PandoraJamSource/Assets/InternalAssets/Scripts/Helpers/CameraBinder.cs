@@ -2,7 +2,7 @@ using Cinemachine;
 using InternalAssets.Scripts.Player;
 using UnityEngine;
 
-namespace Presnoyarsk
+namespace InternalAssets.Scripts
 {
     [RequireComponent(typeof(CinemachineVirtualCamera))]
     public class CameraBinder : MonoBehaviour
