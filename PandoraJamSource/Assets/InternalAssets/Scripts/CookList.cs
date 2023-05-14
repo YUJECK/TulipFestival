@@ -8,7 +8,6 @@ using Zenject;
 
 public class CookList : MonoBehaviour
 {
-    [SerializeField] private ListItem[] _items;
     [SerializeField] private List<ListItemObject> _itemObjects = new();
     [SerializeField] private ListItemObject itemPrefab;
 
@@ -16,13 +15,17 @@ public class CookList : MonoBehaviour
     [SerializeField] private GameObject _list;
     [SerializeField] private Vector3 move;
 
-    public event Action OnAllCompleted; 
+    public event Action OnAllCompleted;
 
+    private MealContainer _mealContainer;
+    
     [Inject]
-    private void Constructor(Pot service, IInputService inputService)
+    private void Constructor(Pot service, IInputService inputService, MealContainer mealContainer)
     {
         service.OnCooked += OnCooked;
         inputService.OnListPressed += EnableList;
+        _mealContainer = mealContainer;
+
     }
 
     private void EnableList()
@@ -49,18 +52,25 @@ public class CookList : MonoBehaviour
 
     private void Awake()
     {
-        _first.Set(_items[0]);
-        _itemObjects.Add(_first);
-
-        for (var index = 1; index < _items.Length; index++)
+        int index = 0;
+        
+        foreach (var meal in _mealContainer._mealsRecipes)
         {
-            var item = _items[index];
+            if (index == 0)
+            {
+                _first.Set(new ListItem(meal.Value, meal.Key.Ingredients.ToArray()));
+                _itemObjects.Add(_first);
+            }
 
-            Vector3 newPos = _first.transform.position + move * index;
-            ListItemObject itemObject = Instantiate(itemPrefab, newPos, quaternion.identity, _list.transform);
-            _itemObjects.Add(itemObject);
+            else
+            {
+                Vector3 newPos = _first.transform.position + move * index;
+                ListItemObject itemObject = Instantiate(itemPrefab, newPos, quaternion.identity, _list.transform);
+                _itemObjects.Add(itemObject);
 
-            itemObject.Set(item);
+                itemObject.Set(new ListItem(meal.Value, meal.Key.Ingredients.ToArray()));
+            }
+            index++;
         }
     }
 }

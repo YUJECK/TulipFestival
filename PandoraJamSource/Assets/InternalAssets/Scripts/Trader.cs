@@ -1,37 +1,28 @@
-using InternalAssets.Scripts.CookSystem;
-using InternalAssets.Scripts.InventorySystem;
-using InternalAssets.Scripts.Player;
+using InternalAssets.Scripts.TradeSystem;
+using Presnoyarsk.Player;
 using UnityEngine;
-using Zenject;
 
 namespace InternalAssets.Scripts
 {
-    public class Trader : MonoBehaviour, IInteractive
+    public class Trader : MonoBehaviour, IInteractive, IDetectable
     {
-        [SerializeField] private Ingredient _ingredient;
-        
-        private Inventory _inventory;
-        private CharacterMoney _characterMoney;
-
-        private int _currentCost = 0;
-        
-        [Inject]
-        private void Constructor(Inventory inventory, CharacterMoney characterMoney)
-        {
-            _inventory = inventory;
-            _characterMoney = characterMoney;
-        }
-
-        public void SetCost(int newCost)
-        {
-            if (newCost <= 0)
-                _currentCost = newCost;
-        }
+        [SerializeField] private TraderSwitchController _tradeUI;
+        [SerializeField] private TraderConfig _traderConfig;
         
         public void Interact()
         {
-            _inventory.AddIngredient(_ingredient);
-            _characterMoney.CurrentMoney -= _currentCost;
+            _tradeUI.gameObject.SetActive(true);
+            _tradeUI.Switch(_traderConfig);
+        }
+
+        public void OnDetected()
+        {
+            
+        }
+
+        public void OnDetectionReleased()
+        {
+            _tradeUI.gameObject.SetActive(false);
         }
     }
 }

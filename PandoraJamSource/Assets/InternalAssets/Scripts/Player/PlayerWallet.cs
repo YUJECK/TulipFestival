@@ -1,10 +1,10 @@
 namespace InternalAssets.Scripts.Player
 {
-    public sealed class CharacterMoney
+    public sealed class PlayerWallet
     {
         public int CurrentMoney = 0;
 
-        public CharacterMoney(int currentMoney)
+        public PlayerWallet(int currentMoney)
         {
             CurrentMoney = currentMoney;
         }

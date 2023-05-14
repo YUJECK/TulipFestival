@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d099beb486c417d9b69ffbed719a9f7, type: 3}
   m_Name: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430"
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0413\u0440\u0443\u0448\u0438"
+  <Name>k__BackingField: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430"
   <IngredientSprite>k__BackingField: {fileID: 1811469162, guid: f1a9109400b9c754c9087acc9c4f1733, type: 3}
+  <Happy>k__BackingField: {x: 701, y: 9999999}
+  <Ok>k__BackingField: {x: 500, y: 700}
+  <Angry>k__BackingField: {x: 251, y: 499}
+  <SuperAngry>k__BackingField: {x: 0, y: 250}

@@ -16,8 +16,8 @@ namespace InternalAssets.Scripts.MonoInstallers
             Container.InstantiatePrefab(playerPrefab, _startPoint.position, Quaternion.identity, null);
 
             Container
-                .Bind<CharacterMoney>()
-                .FromInstance(new CharacterMoney(startMoney))
+                .Bind<PlayerWallet>()
+                .FromInstance(new PlayerWallet(startMoney))
                 .AsSingle();
         }
     }

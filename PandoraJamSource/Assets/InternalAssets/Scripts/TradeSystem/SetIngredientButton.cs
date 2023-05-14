@@ -18,10 +18,13 @@ namespace InternalAssets.Scripts.TradeSystem
         
         public void Set(Ingredient ingredient)
         {
-            _ingredient = ingredient;
+            if (ingredient != null)
+            {
+                _ingredient = ingredient;
 
-            _ingredientImage.sprite = ingredient.IngredientSprite;
-            _text.text = ingredient.Name;
+                _ingredientImage.sprite = ingredient.IngredientSprite;
+                _text.text = ingredient.Name;
+            }
         }
 
         private void Awake()

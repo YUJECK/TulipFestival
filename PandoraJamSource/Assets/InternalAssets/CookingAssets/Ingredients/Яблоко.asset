@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\u042F\u0431\u043B\u043E\u043A\u043E"
   <IngredientSprite>k__BackingField: {fileID: -43022705, guid: f1a9109400b9c754c9087acc9c4f1733, type: 3}
+  <Happy>k__BackingField: {x: 1301, y: 999999}
+  <Ok>k__BackingField: {x: 1000, y: 1300}
+  <Angry>k__BackingField: {x: 401, y: 999}
+  <SuperAngry>k__BackingField: {x: 0, y: 400}

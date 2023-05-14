@@ -11,7 +11,7 @@ namespace InternalAssets.Scripts.InventorySystem
         public event Action<Ingredient> OnIngredientAdded;
         public event Action<Ingredient> OnIngredientRemoved;
 
-        private bool IsFull => Ingredients.Count > 3;
+        private bool IsFull => Ingredients.Count > 5;
         
         public bool AddIngredient(Ingredient ingredient)
         {

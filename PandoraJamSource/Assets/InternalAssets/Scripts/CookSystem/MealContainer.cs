@@ -5,7 +5,7 @@ namespace InternalAssets.Scripts.CookSystem
 {
     public class MealContainer
     {
-        private readonly SerializedDictionary<Recipe, Meal> _mealsRecipes = new();
+        public readonly SerializedDictionary<Recipe, Meal> _mealsRecipes = new();
 
         public MealContainer(SerializedDictionary<Recipe, Meal> mealsRecipes)
         {

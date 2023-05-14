@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: "\u042E\u0436\u043E\u0440\u043D"
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\u042E\u0436\u043E\u0440\u043D"
-  <OkSprite>k__BackingField: {fileID: 21300000, guid: dd88f8c50a3127d43a566ca793ac51ab, type: 3}
-  <HappySprite>k__BackingField: {fileID: 0}
-  <AngrySprite>k__BackingField: {fileID: 0}
-  <SuperAngrySprite>k__BackingField: {fileID: 0}
+  <OkSprite>k__BackingField: {fileID: -683159410, guid: dd88f8c50a3127d43a566ca793ac51ab, type: 3}
+  <HappySprite>k__BackingField: {fileID: 979730005, guid: dd88f8c50a3127d43a566ca793ac51ab, type: 3}
+  <AngrySprite>k__BackingField: {fileID: -644679111, guid: dd88f8c50a3127d43a566ca793ac51ab, type: 3}
+  <SuperAngrySprite>k__BackingField: {fileID: -1716880427, guid: dd88f8c50a3127d43a566ca793ac51ab, type: 3}
   <Ingredients>k__BackingField:
   - {fileID: 11400000, guid: a2221ab4a88c7f3488b6fef5b2835d68, type: 2}
   - {fileID: 11400000, guid: 50e0e31dc80aa254d94af33943925524, type: 2}

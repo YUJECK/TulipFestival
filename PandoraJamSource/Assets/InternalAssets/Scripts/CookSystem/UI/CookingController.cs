@@ -34,6 +34,13 @@ namespace InternalAssets.Scripts.CookSystem.UI
             _buttons = GetComponentsInChildren<IngredientAddButton>();
         }
 
+        private void Start()
+        {
+
+            gameObject.SetActive(false);
+
+        }
+
         private void OnEnable()
         {
             UpdateSlots(null);

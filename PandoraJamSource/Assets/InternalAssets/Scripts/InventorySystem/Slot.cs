@@ -8,7 +8,7 @@ namespace InternalAssets.Scripts.InventorySystem
     public sealed class Slot : MonoBehaviour
     {
         [SerializeField] private Image image;
-        private Ingredient _current;
+        public Ingredient _current;
 
         public bool Empty => _current == null;
 

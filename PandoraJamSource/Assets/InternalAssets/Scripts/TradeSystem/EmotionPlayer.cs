@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using InternalAssets.Scripts.CookSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,16 +7,22 @@ namespace InternalAssets.Scripts.TradeSystem
     [RequireComponent(typeof(Image))]
     public sealed class EmotionPlayer : MonoBehaviour
     {
+        [SerializeField] private TraderSwitchController _traderSwitchController;
+        [SerializeField] private TradeManager _traderManager;
         [SerializeField] private PaymentController _paymentController;
         [SerializeField] private Button _button;
 
-        [SerializeField] private Vector2Int _happy;
-        [SerializeField] private Vector2Int _ok;
-        [SerializeField] private Vector2Int _angry;
-        [SerializeField] private Vector2Int _superAngry;
+        [SerializeField] private Vector2Int _happy => _ingredient.Happy;
+        [SerializeField] private Vector2Int _ok => _ingredient.Ok;
+        [SerializeField] private Vector2Int _angry => _ingredient.Angry;
+        [SerializeField] private Vector2Int _superAngry => _ingredient.SuperAngry;
 
+        private Ingredient _ingredient;
+        
         private Image _image;
         private int currentValue;
+
+        private TraderConfig _config;
         
         private void Awake()
         {
@@ -24,6 +30,18 @@ namespace InternalAssets.Scripts.TradeSystem
 
             _image = GetComponent<Image>();
             _button.onClick.AddListener(OnButtonClick);
+            _traderSwitchController.OnTraderSwitched += OnTraderSwitched;
+            _traderManager.OnIngredientChanged += OnIngredientChanged;
+        }
+
+        private void OnIngredientChanged(Ingredient obj)
+        {
+            _ingredient = obj;
+        }
+
+        private void OnTraderSwitched(TraderConfig obj)
+        {
+            _config = obj;
         }
 
         private void OnButtonClick()
@@ -34,21 +52,46 @@ namespace InternalAssets.Scripts.TradeSystem
         private void OnValueChanged(int obj)
         {
             currentValue = obj;
+            
+            if (InRange(obj, _happy.x, _happy.y))
+                _traderManager.CanBuy = true;
+
+            if (InRange(obj, _ok.x, _ok.y))
+                _traderManager.CanBuy = true;
+
+            
+            if (InRange(obj, _angry.x, _angry.y))
+                _traderManager.CanBuy = false;
+
+            if (InRange(obj, _superAngry.x, _superAngry.y))
+                _traderManager.CanBuy = false;
         }
 
         private void CheckValue(int value)
         {
             if (InRange(value, _happy.x, _happy.y))
-                _image.color = Color.green;
+            {
+                _image.sprite = _config.HappySprite;
+                _traderManager.CanBuy = true;
+            }
 
             if (InRange(value, _ok.x, _ok.y))
-                _image.color = Color.yellow;
+            {
+                _image.sprite = _config.OkSprite;
+                _traderManager.CanBuy = true;
+            }
 
             if (InRange(value, _angry.x, _angry.y))
-                _image.color = Color.red;
+            {
+                _image.sprite = _config.AngrySprite;
+                _traderManager.CanBuy = false;
+            }
 
             if (InRange(value, _superAngry.x, _superAngry.y))
-                _image.color = new Color(0.7f, 0.15f, 0.15f, 1);
+            {
+                _image.sprite = _config.SuperAngrySprite;
+                _traderManager.CanBuy = false;
+            }
         }
 
         private bool InRange(int value, int minValue, int maxValue)

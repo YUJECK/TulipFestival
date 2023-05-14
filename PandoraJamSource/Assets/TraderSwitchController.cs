@@ -12,10 +12,13 @@ public sealed class TraderSwitchController : MonoBehaviour
     [SerializeField] private IngredientButtonBinder _ingredientButtonBinder;
 
     [SerializeField] private TraderConfig test;
+
+    public event Action<TraderConfig> OnTraderSwitched;
     
     private void Start()
     {
         Switch(test);
+        gameObject.SetActive(false);
     }
 
     public void Switch(TraderConfig traderConfig)
@@ -24,5 +27,7 @@ public sealed class TraderSwitchController : MonoBehaviour
         _traderImage.sprite = traderConfig.OkSprite;
         
         _ingredientButtonBinder.SetIngredients(traderConfig.Ingredients);
+        
+        OnTraderSwitched?.Invoke(traderConfig);
     }
 }

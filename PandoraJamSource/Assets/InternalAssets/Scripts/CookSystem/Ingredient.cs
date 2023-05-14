@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace InternalAssets.Scripts.CookSystem
 {
@@ -7,5 +8,10 @@ namespace InternalAssets.Scripts.CookSystem
     {
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField] public Sprite IngredientSprite { get; private set; }
+
+        [field: SerializeField] public Vector2Int Happy { get; private set; }
+        [field: SerializeField] public  Vector2Int Ok { get; private set; }
+        [field: SerializeField] public  Vector2Int Angry { get; private set; }
+        [field: SerializeField] public  Vector2Int SuperAngry { get; private set; }
     }
 }

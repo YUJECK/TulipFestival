@@ -20,8 +20,14 @@ namespace InternalAssets.Scripts.TradeSystem
 
         public void SetIngredients(Ingredient[] ingredients)
         {
-            for (var index = 0; index < ingredients.Length; index++)
+            for (var index = 0; index < _setIngredientButton.Length; index++)
             {
+                if (index >= ingredients.Length)
+                {
+                    _setIngredientButton[index].Set(null);
+                    continue;
+                }
+                
                 var ingredient = ingredients[index];
                 _setIngredientButton[index].Set(ingredient);
             }

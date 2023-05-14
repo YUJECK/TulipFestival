@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecb21dc5a0c4c6d8ed1cc275dc8aab7, type: 3}
+  m_Name: "\u0417\u0430\u0441\u0430\u0445\u0430\u0440\u0435\u043D\u043D\u0430\u044F
+    \u0447\u0435\u0440\u043D\u0438\u043A\u0430"
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430 \u0432 \u0441\u0430\u0445\u0430\u0440\u0435"
+  <MealSprite>k__BackingField: {fileID: -1251452185, guid: 688f3244d149d5343abdcda30275fd6d, type: 3}
