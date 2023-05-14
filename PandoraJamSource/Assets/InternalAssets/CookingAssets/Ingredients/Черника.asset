@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d099beb486c417d9b69ffbed719a9f7, type: 3}
-  m_Name: New Ingredient
+  m_Name: "\u0427\u0435\u0440\u043D\u0438\u043A\u0430"
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0425\u0440\u0435\u043D\u044C3"
-  <IngredientSprite>k__BackingField: {fileID: -600197473, guid: 4f16f749f48661f41bfb5b99400b9f23, type: 3}
+  <Name>k__BackingField: "\u0413\u0440\u0443\u0448\u0438"
+  <IngredientSprite>k__BackingField: {fileID: 1811469162, guid: f1a9109400b9c754c9087acc9c4f1733, type: 3}

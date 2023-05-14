@@ -23,6 +23,12 @@ namespace InternalAssets.Scripts.CookSystem
             
             _pot.OnAdded += OnAdded;
             _pot.OnRemoved += OnRemoved;
+            _pot.OnCooked += OnCooked;
+        }
+
+        private void OnCooked(Meal obj)
+        {
+            _mealSprite.sprite = obj.MealSprite;
         }
 
         private void Awake()

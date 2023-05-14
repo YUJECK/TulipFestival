@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecb21dc5a0c4c6d8ed1cc275dc8aab7, type: 3}
-  m_Name: New Meal
+  m_Script: {fileID: 11500000, guid: 0d099beb486c417d9b69ffbed719a9f7, type: 3}
+  m_Name: "\u0421\u0430\u0445\u0430\u0440"
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0427\u0442\u043E\u0442\u043E"
-  <MealSprite>k__BackingField: {fileID: -741216364, guid: 4f16f749f48661f41bfb5b99400b9f23, type: 3}
+  <Name>k__BackingField: "\u0413\u0440\u0443\u0448\u0438"
+  <IngredientSprite>k__BackingField: {fileID: 416715203, guid: f1a9109400b9c754c9087acc9c4f1733, type: 3}

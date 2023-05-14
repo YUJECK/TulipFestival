@@ -38,12 +38,13 @@ namespace InternalAssets.Scripts.CookSystem
         
         public bool TryCook()
         {
-            Debug.Log("dslkjf");
-            
-            if(_mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal))
+            if (_mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal))
+            {
                 OnCooked?.Invoke(meal);
-            
-            return true;
+                return true;
+            }
+
+            return false;
         }
     }
 }

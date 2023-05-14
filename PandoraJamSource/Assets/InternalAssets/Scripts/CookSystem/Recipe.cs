@@ -20,12 +20,10 @@ namespace InternalAssets.Scripts.CookSystem
             {
                 if (!recipe2.Ingredients.Contains(ingredient))
                 {
-                    Debug.Log("messegsfde");
                     return false;
                 }
             }
 
-            Debug.Log("messegsafdafsdfakjsdfjsfde");
             return true;
         }
 

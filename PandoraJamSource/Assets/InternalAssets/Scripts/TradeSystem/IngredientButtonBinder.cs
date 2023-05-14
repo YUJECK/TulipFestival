@@ -1,0 +1,30 @@
+using InternalAssets.Scripts.CookSystem;
+using UnityEngine;
+
+namespace InternalAssets.Scripts.TradeSystem
+{
+    public sealed class IngredientButtonBinder : MonoBehaviour
+    {
+        private SetIngredientButton[] _setIngredientButton;
+        [SerializeField] private TradeManager _tradeManager;
+
+        private void Awake()
+        {
+            _setIngredientButton = GetComponentsInChildren<SetIngredientButton>();
+
+            foreach (var button in _setIngredientButton)
+            {
+                button.SetTraderManager(_tradeManager);
+            }
+        }
+
+        public void SetIngredients(Ingredient[] ingredients)
+        {
+            for (var index = 0; index < ingredients.Length; index++)
+            {
+                var ingredient = ingredients[index];
+                _setIngredientButton[index].Set(ingredient);
+            }
+        }
+    }
+}
