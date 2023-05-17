@@ -32,5 +32,13 @@ namespace InternalAssets.Scripts.InventorySystem
 
         public bool Contains(Ingredient ingredient) 
             => Ingredients.Contains(ingredient);
+
+        public void RemoveAll()
+        {
+            foreach (var ingredient in Ingredients)
+                OnIngredientRemoved?.Invoke(ingredient);
+            
+            Ingredients.Clear();
+        }
     }
 }

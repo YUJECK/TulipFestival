@@ -18,9 +18,12 @@ namespace InternalAssets.Scripts.CookSystem
             foreach (var ingredient in recipe1.Ingredients)
             {
                 if (!recipe2.Ingredients.Contains(ingredient))
-                {
                     return false;
-                }
+            }
+            foreach (var ingredient in recipe2.Ingredients)
+            {
+                if (!recipe1.Ingredients.Contains(ingredient))
+                    return false;
             }
 
             return true;

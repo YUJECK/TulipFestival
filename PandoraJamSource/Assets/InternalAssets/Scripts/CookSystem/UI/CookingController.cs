@@ -16,6 +16,16 @@ namespace InternalAssets.Scripts.CookSystem.UI
             _inventory = inventory;
             
             _inventory.OnIngredientAdded += UpdateSlots;
+            _inventory.OnIngredientRemoved += Remove;
+        }
+
+        private void Remove(Ingredient obj)
+        {
+            foreach (var ingredientAddButton in _buttons)
+            {
+                if(ingredientAddButton.Ingredient == obj)
+                    ingredientAddButton.SetIngredient(null);
+            }
         }
 
         private void UpdateSlots(Ingredient obj)

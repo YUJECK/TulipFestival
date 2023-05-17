@@ -15,14 +15,14 @@ namespace InternalAssets.Scripts.CookSystem
         [SerializeField] private Image _mealSprite;
 
         private MealContainer _mealContainer;
-        private Inventory _inventpry;
+        private Inventory _inventory;
 
         [Inject]
         private void Constructor(Pot pot, MealContainer mealContainer, Inventory inventory)
         {
             _pot = pot;
             _mealContainer = mealContainer;
-            _inventpry = inventory;
+            _inventory = inventory;
             
             
             _pot.OnAdded += OnAdded;
@@ -43,11 +43,12 @@ namespace InternalAssets.Scripts.CookSystem
         private void OnRemoved(Ingredient obj)
         {
             GetWith(obj)?.Remove().Disable();
+            _inventory.RemoveIngredient(obj);
         }
 
         private void OnAdded(Ingredient obj)
         {
-            GetWith(null).SetIngredient(obj).Enable();
+            GetWith(null)?.SetIngredient(obj).Enable();
         }
 
         private IngredientImage GetWith(Ingredient ingredient)
@@ -63,25 +64,13 @@ namespace InternalAssets.Scripts.CookSystem
         
         public void TryCookButton()
         {
-            if (_pot.TryCook())
-            {
-                foreach (var image in _ingredientsImages)
-                {
-                    image.Remove().Disable();
-                }
-                foreach (var VARIABLE in _pot.Ingredients)
-                {
-                    _inventpry.RemoveIngredient(VARIABLE);
-                }
-                _pot.RemoveAll();
-                
-                RemoveAll();
-            }
+            _pot.TryCook();
         }
 
         public void RemoveAll()
         {
-
+            foreach (var image in _ingredientsImages)
+                image.Remove().Disable();
         }
     }
 }

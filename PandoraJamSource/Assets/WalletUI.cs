@@ -17,6 +17,6 @@ public class WalletUI : MonoBehaviour
     
     void Update()
     {
-        GetComponent<TMP_Text>().text = _service.CurrentMoney + "$";            
+        GetComponent<TMP_Text>().text = _service.CurrentMoney.ToString();            
     }
 }

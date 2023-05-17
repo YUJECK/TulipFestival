@@ -33,7 +33,7 @@ namespace InternalAssets.Scripts.TradeSystem
 
         private void OnChanged(float arg0)
         {
-            _text.text = $"{(int)arg0}$";
+            _text.text = $"{(int)arg0}";
             OnValueChanged?.Invoke((int)arg0);
         }
 

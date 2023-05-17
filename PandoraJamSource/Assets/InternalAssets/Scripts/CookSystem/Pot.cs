@@ -40,6 +40,8 @@ namespace InternalAssets.Scripts.CookSystem
             if (_mealContainer.Get(new Recipe(_currentIngredients.ToArray()), out var meal))
             {
                 OnCooked?.Invoke(meal);
+                RemoveAll();
+                
                 return true;
             }
 

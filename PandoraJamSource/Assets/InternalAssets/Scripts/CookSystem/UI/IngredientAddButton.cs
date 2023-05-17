@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -6,7 +7,7 @@ namespace InternalAssets.Scripts.CookSystem.UI
 {
     public sealed class IngredientAddButton : MonoBehaviour
     {
-        private Ingredient _ingredient;
+        public Ingredient Ingredient { get; private set; }
         private Pot _pot;
 
         private TMP_Text _text;
@@ -24,13 +25,26 @@ namespace InternalAssets.Scripts.CookSystem.UI
 
         public void SetIngredient(Ingredient ingredient)
         {
-            _ingredient = ingredient;
+            Ingredient = ingredient;
+            
+            if (ingredient == null)
+            {
+                Disable();
+                return;
+            }
+            
             _text.text = ingredient.Name;
+        }
+
+        private void Disable()
+        {
+            _text.text = "";
         }
 
         public void AddToPot()
         {
-            _pot.Add(_ingredient);
+            if(Ingredient != null)
+                _pot.Add(Ingredient);
         }
     }
 }

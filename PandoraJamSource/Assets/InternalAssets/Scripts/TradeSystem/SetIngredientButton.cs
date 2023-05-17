@@ -22,8 +22,15 @@ namespace InternalAssets.Scripts.TradeSystem
             {
                 _ingredient = ingredient;
 
+                _ingredientImage.color = Color.white;
+                
                 _ingredientImage.sprite = ingredient.IngredientSprite;
                 _text.text = ingredient.Name;
+            }
+            else
+            {
+                _ingredientImage.color = Color.clear;
+                _text.text = "";
             }
         }
 
